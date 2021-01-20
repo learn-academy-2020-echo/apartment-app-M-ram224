@@ -1,6 +1,6 @@
-import React from "react"
+import React, { Component } from "react"
 
-class ApartmentNew extends React {
+class ApartmentNew extends Component {
   render() {
     return (
       <React.Fragment>

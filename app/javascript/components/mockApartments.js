@@ -1,32 +1,32 @@
-// Apartments have: a street designation, a city, state, a manager's name, manager's contact email, monthly rental price, bedrooms, bathrooms, and whether they allow pets
+// Apartments have: a street designation, a city, state, a manager's name, manager's contact email, monthly rental price, bedrooms, bathrooms, and whether they allow pets. And also a user_id for foregin key
 const mockApartments = [
-{   
+  {
     id: 1,
     street: "314 Walabee Ln",
     city: "Chula Vista",
     state: "CA",
     manager: "Mr. Franklin",
-    Email: "mfrank@mail.com",
+    email: "mfrank@mail.com",
     price: "800",
     bedrooms: "1",
     bathrooms: "1",
     pets: "No",
-    user_id: 1
-}
-{   
+    user_id: 1,
+  },
+  {
     id: 1,
     street: "4773 Moonton Ave",
     city: "Luxor",
     state: "NV",
     manager: "Mr. Luthor",
-    Email: "luthor-co@manage.com",
+    email: "luthor-co@manage.com",
     price: "1200",
     bedrooms: "3",
     bathrooms: "2",
     pets: "Yes",
-    user_id: 2
-}
-{   
+    user_id: 2,
+  },
+  {
     id: 3,
     street: "900 Beemer st",
     city: "Bozeman",
@@ -37,5 +37,8 @@ const mockApartments = [
     bedrooms: "5",
     bathrooms: "3",
     pets: "Yes",
-    user_id: 1
-}]
+    user_id: 1,
+  },
+]
+
+export default mockApartments

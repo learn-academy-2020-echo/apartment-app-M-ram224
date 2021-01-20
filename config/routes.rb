@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  # devise/routes for user
-  devise_for :users
-  # 
+  # Apartment Routes
   resources :apartments
-  # constarints
+  
+  # devise/user routes
+  devise_for :users
+
+  # constraints
   get '*path', to: 'home#index', constraints: ->(request){ request.format.html? }
 
+  # Landing page will be the React component
   root to: 'home#index'
 end

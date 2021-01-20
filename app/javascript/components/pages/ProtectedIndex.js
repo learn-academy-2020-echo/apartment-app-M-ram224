@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { NavLink } from "react-router-dom"
 import { Button } from "reactstrap"
 
-class ApartmentIndex extends Component {
+class ProtectedIndex extends Component {
   render() {
     return (
       <React.Fragment>
@@ -27,4 +27,4 @@ class ApartmentIndex extends Component {
   }
 }
 
-export default ApartmentIndex
+export default ProtectedIndex
