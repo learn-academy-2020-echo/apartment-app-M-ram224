@@ -5,7 +5,7 @@ class ApartmentShow extends Component {
     const { apartment } = this.props
     return (
       <>
-        <h1>ApartmentShow</h1>
+        <h1>Apartment Info</h1>
         <p>{apartment.street}</p>
         <p>{apartment.city}</p>
         <p>{apartment.state}</p>
@@ -16,6 +16,7 @@ class ApartmentShow extends Component {
         <p>{apartment.bathrooms}</p>
         <p>{apartment.pets}</p>
       </>
+      // use a <NavLink></NavLink> to create a proper button to edit and create new
     )
   }
 }

@@ -1,9 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-
+user = User.create email: 'm-test@email.com', password: '123456', password_confirmation: '123456'
 apartments = [
   {
-    id: 1,
     street: "314 Walabee Ln",
     city: "Chula Vista",
     state: "CA",
@@ -13,10 +10,9 @@ apartments = [
     bedrooms: "1",
     bathrooms: "1",
     pets: "No",
-    user_id: 1,
+    user_id: user.id
   },
   {
-    id: 1,
     street: "4773 Moonton Ave",
     city: "Luxor",
     state: "NV",
@@ -26,10 +22,9 @@ apartments = [
     bedrooms: "3",
     bathrooms: "2",
     pets: "Yes",
-    user_id: 2,
+    user_id: user.id
   },
   {
-    id: 3,
     street: "900 Beemer st",
     city: "Bozeman",
     state: "MT",
@@ -39,11 +34,11 @@ apartments = [
     bedrooms: "5",
     bathrooms: "3",
     pets: "Yes",
-    user_id: 1,
+    user_id: user.id
   },
 ]
 
-apartments.each do |attributes|
-    Apartments.create attributes
-    puts "creating apartment #{attributes}"
+apartments.each do |attr|
+    Apartment.create attr
+    puts "creating apartment: #{attr}"
 end

@@ -10,14 +10,32 @@ import NotFound from "./pages/NotFound"
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-import mockApartments from "./mockApartments"
+// import mockApartments from "./mockApartments"
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      apartments: mockApartments,
+      apartments: [],
     }
+  }
+
+  componentDidMount() {
+    this.apartmentIndex()
+  }
+
+  apartmentIndex = () => {
+    fetch("/apartments")
+      .then((response) => {
+        return response.json()
+      })
+      .then((apartmentsArray) => {
+        // setting state with data from the backend into the empty array
+        this.setState({ apartments: apartmentsArray })
+      })
+      .catch((errors) => {
+        console.log("index errors:", errors)
+      })
   }
   render() {
     console.log(this.state.apartments)
@@ -54,20 +72,31 @@ class App extends Component {
           />
 
           {/* -----Protected Index----- */}
+          {this.props.logged_in && (
+            <Route
+              path="/myapt"
+              render={(props) => {
+                let id = this.props.current_user.id
+                let myapartments = this.state.apartments.filter(
+                  (apt) => apt.user_id === id
+                )
+                console.log(myapartments)
+                return <ProtectedIndex myapartments={myapartments} />
+              }}
+            />
+          )}
+          {/* // -----New----- */}
           <Route
-            path="/myapt"
+            path="/aptnew"
             render={(props) => {
-              let id = this.props.current_user.id
-              let myapartments = this.state.apartments.filter(
-                (apt) => apt.user_id === id
+              return (
+                <ApartmentNew
+                  current_user={this.props.current_user}
+                  createNewAprtment={this.createNewApartment}
+                />
               )
-              console.log(myapartments)
-              return <ProtectedIndex myapartments={myapartments} />
             }}
           />
-
-          {/* // -----New----- */}
-          <Route path="/aptnew" component={ApartmentNew} />
 
           <Route component={NotFound} />
         </Switch>
